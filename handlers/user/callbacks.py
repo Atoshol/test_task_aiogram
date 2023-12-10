@@ -1,17 +1,20 @@
+from aiogram import Bot, Router, F
 from aiogram.types import CallbackQuery
-from aiogram import Router
+from aiogram.fsm.context import FSMContext
+from aiogram.exceptions import TelegramBadRequest
+from aiogram.utils import i18n
+from aiogram.types import User
+
 from db.models.user import UserStore
 from db.models.user_profile import UserProfileStore
-from aiogram import F
-from aiogram import Bot
+from db.get_locale import get_locale
+
 from keyboards.reply import get_menu_kb
 from keyboards.inline import get_profile_data_kb
+
 from utils.language import _
-from aiogram.fsm.context import FSMContext
 from utils.states import RegState, ProfileState
-from db.get_locale import get_locale
-from aiogram.utils import i18n
-from aiogram.exceptions import TelegramBadRequest
+
 
 
 async def cb_language_set(query: CallbackQuery, state: FSMContext):

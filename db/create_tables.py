@@ -1,11 +1,13 @@
 import asyncio
 from sqlalchemy import text
+from sqlalchemy_utils import database_exists, create_database
+from sqlalchemy.ext.asyncio import create_async_engine
+
 from utils.defaults import DB_URL
 from db.postgres import Base, engine
 from db.models.user import User  # don't remove this import
 from db.models.user_profile import UserProfile  # don't remove this import
-from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy_utils import database_exists, create_database
+
 
 
 async def remove_all_tables():

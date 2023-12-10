@@ -14,7 +14,6 @@ from handlers.user.callbacks import register_callback
 from utils.defaults import BOT_TOKEN, WORKDIR
 
 
-
 async def main() -> None:
     bot = Bot(BOT_TOKEN, parse_mode=ParseMode.HTML)
     dp = Dispatcher(storage=MemoryStorage())

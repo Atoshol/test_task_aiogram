@@ -1,12 +1,15 @@
-from sqlalchemy.orm import relationship
-from pydantic import BaseModel
-from db.postgres import Base
 from datetime import datetime
-from sqlalchemy import (Column, DateTime, ForeignKey, Integer,
-                        JSON, String, asc, func, select, and_, delete, desc, Boolean, update)
-from decorators.db_session import db_session
-from typing import Optional, List
+from typing import List, Optional
+
+from pydantic import BaseModel
+from sqlalchemy import (Column, DateTime, ForeignKey, Integer, JSON, String,
+                        and_, asc, delete, desc, func, select, update)
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import relationship
+
+from db.postgres import Base
+from decorators.db_session import db_session
+
 
 
 class UserProfileModel(BaseModel):

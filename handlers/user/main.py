@@ -1,20 +1,25 @@
-from aiogram import Router, F, Bot
-from aiogram.filters import CommandStart, Command
-from aiogram.types import Message, ContentType
+from io import BytesIO
+import datetime
+
+from aiogram import Bot, types
+from aiogram.dispatcher import Dispatcher
+from aiogram.filters import Command, CommandStart
+from aiogram.fsm.context import FSMContext
+from aiogram.types import ContentType
 from aiogram import html
-from keyboards.inline import language_kb, get_profile_data_kb
+from aiogram.utils.markdown import html as md_html
+
+from keyboards.inline import language_kb
 from keyboards.reply import get_menu_kb, get_type_meter_kb, REMOVE_KB
 from db.models.user import UserStore
 from db.models.user_profile import UserProfileStore
-from aiogram.fsm.context import FSMContext
 from utils.states import RegState, MeterReadingsState, ProfileState
 from utils.get_file import get_file
 from utils.defaults import type_of_meter
 from google.googleAPI import upload_file_to_user_folder
-import io
-import datetime
 from utils.language import _
 from db.get_locale import get_locale
+
 
 
 async def start(message: Message):
