@@ -61,6 +61,7 @@ async def profile_callback(query: CallbackQuery, state: FSMContext):
     except TelegramBadRequest:
         pass
 
+
 def register_callback(router: Router):
     router.callback_query.register(cb_language_set, F.data == "uk")
     router.callback_query.register(cb_language_set, F.data == "en")

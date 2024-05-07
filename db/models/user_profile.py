@@ -11,7 +11,6 @@ from db.postgres import Base
 from decorators.db_session import db_session
 
 
-
 class UserProfileModel(BaseModel):
     id: int
     user_id: int

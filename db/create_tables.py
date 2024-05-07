@@ -9,7 +9,6 @@ from db.models.user import User  # don't remove this import
 from db.models.user_profile import UserProfile  # don't remove this import
 
 
-
 async def remove_all_tables():
     async with engine.begin() as connection:
         remove_all = text('''

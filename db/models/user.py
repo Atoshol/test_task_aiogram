@@ -12,7 +12,6 @@ from db.postgres import Base
 from decorators.db_session import db_session
 
 
-
 class UserModel(BaseModel):
     user_id: int
     username: str

@@ -1,15 +1,13 @@
 from io import BytesIO
 import datetime
 
-from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher
+from aiogram import Bot, types, Router, F
 from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import ContentType
+from aiogram.types import ContentType, Message
 from aiogram import html
-from aiogram.utils.markdown import html as md_html
 
-from keyboards.inline import language_kb
+from keyboards.inline import language_kb, get_profile_data_kb
 from keyboards.reply import get_menu_kb, get_type_meter_kb, REMOVE_KB
 from db.models.user import UserStore
 from db.models.user_profile import UserProfileStore
@@ -19,7 +17,6 @@ from utils.defaults import type_of_meter
 from google.googleAPI import upload_file_to_user_folder
 from utils.language import _
 from db.get_locale import get_locale
-
 
 
 async def start(message: Message):
@@ -103,7 +100,7 @@ async def meter_reading_photo_and_save(message: Message, state: FSMContext):
     file_id = message.photo[-1].file_id
     file_content = get_file(file_id)
 
-    photo_stream = io.BytesIO(file_content)
+    photo_stream = BytesIO(file_content)
     photo_stream.seek(0)
 
     upload_file_to_user_folder(photo_stream, user_id, data_to_sheet)
